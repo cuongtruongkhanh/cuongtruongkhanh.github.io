@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>kclearncode</title>
+    <title>KcLearnCode</title>
     <link rel="shortcut icon" type="image/png" href="/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="/theme/css/screen.css" type="text/css" />
@@ -11,15 +11,14 @@
     <link rel="stylesheet" href="/theme/css/print.css" type="text/css" media="print" />
     <meta name="generator" content="Pelican" />
     <meta name="description" content="" />
-    <meta name="author" content="kc" />
+    <meta name="author" content="KC" />
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li class="selected"><a href="/">Home</a></li>
-                <li><a href="https://github.com/">GitHub</a></li>
-                <li><a href="https://www.kernel.org/">Linux Kernel</a></li>
+                <li><a href="https://github.com/cuongtruongkhanh">My GitHub</a></li>
                 <li><a href="/tags">Tags</a></li>
                 <li><a href="/authors">Authors</a></li>
                 <li><a href="/categories">Categories</a></li>
@@ -27,11 +26,135 @@
             </ul>
         </nav>
         <div class="header_box">
-            <h1><a href="/">kclearncode</a></h1>
+            <h1><a href="/">KcLearnCode</a></h1>
         </div>
     </header>
     <div id="wrapper">
-        <div id="content">            <h4 class="date">Nov 20, 2015</h4>
+        <div id="content">            <h4 class="date">Nov 22, 2022</h4>
+
+            <article class="post">
+                <h2 class="title">
+                    <a href="/push-code-tu-eclipse-len-github.html" rel="bookmark" title="Permanent Link to &quot;Push code từ Eclipse lên Github&quot;">Push code từ Eclipse lên Github</a>
+                </h2>
+
+                
+                
+
+                <h1>Push code từ Eclipse lên Github dùng Access Token</h1>
+<h3>Bài viết được tham khảo từ bài viết của thầy Đào Minh Đảm (automationfc.com)</h3>
+<h4>Vấn đề: Không thể push code lên github bằng mật khẩu tài khoản</h4>
+<ul>
+<li><strong>Nguyên nhân:</strong></li>
+<li>Ngày 13/8/2021 – Github không chấp nhận mật khẩu tài khoản khi xác thực các hoạt động GIT – cần thêm Personal Access Token để thay thế</li>
+<li>Github disable giao thức HTTPS (Web Url) cho các remote repository – thay bằng SSH Url trên Eclipse (eGIT)<ul>
+<li><a href="https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/">Git password authentication is shutting down | GitHub Changelog</a></li>
+<li><a href="https://stackoverflow.com/questions/68790276/has-egit-stopped-working-now-git-receive-pack-not-permitted">Pushing from Eclipse to my GitHub repository via HTTPS stopped working: &quot;git-receive-pack not permitted&quot; error - Stack Overflow</a></li>
+<li>https://reactgo.com/github-password-authentication-removed/</li>
+</ul>
+</li>
+<li><strong>Lưu ý:</strong> Chỉ bị trên Eclipse với Url là https – nếu sử dụng các tool/ IDE khác thì vẫn clone remote repo về được (Git Bash/ Source Tree/ Github Desktop/… )<strong>Nguyên nhân:</strong><ul>
+<li>Ngày 13/8/2021 – Github không chấp nhận mật khẩu tài khoản khi xác thực các hoạt động GIT – cần thêm Personal Access Token để thay thế</li>
+<li>Github disable giao thức HTTPS (Web Url) cho các remote repository – thay bằng SSH Url trên Eclipse (eGIT)</li>
+<li><a href="https://github.blog/changelog/2021-08-12-git-password-authentication-is-shutting-down/">Git password authentication is shutting down | GitHub Changelog</a></li>
+<li>https://stackoverflow.com/questions/68790276/has-egit-stopped-working-now-git-receive-pack-not-permitted</li>
+<li>https://reactgo.com/github-password-authentication-removed/</li>
+<li><strong>Lưu ý:</strong> Chỉ bị trên Eclipse với Url là https – nếu sử dụng các tool/ IDE khác thì vẫn clone remote repo về được (Git Bash/ Source Tree/ Github Desktop/… )</li>
+</ul>
+</li>
+</ul>
+<h4>Giải pháp</h4>
+<ul>
+<li>Generate “<strong>Personal access tokens</strong>” và add vào remote repo của Eclipse (Change credential của git account)</li>
+<li><strong>Step 01 – Generate Access token trên Github</strong></li>
+<li>1 – Vào link – <a href="https://github.com/settings/tokens">Sign in to GitHub · GitHub</a> </li>
+<li>2 – Click vào “<strong>Generate new token</strong>“</li>
+</ul>
+<p><img alt="" src="https://lh3.googleusercontent.com/3f3FeKEELvswbp0ctVQOijaifnfY53UEK5gjxLvDbfNf6XubHRfn-OkI9SESwCFlKailtNms8ecIk2PBqB69yyx-1RJ0hvrL7TIDj4g1tCU3mKF6WgbdauJ288TAqLdiLRGuVNzJ"></p>
+<ul>
+<li>Setting cho Token</li>
+<li>1 – Đặt tên cho Token</li>
+<li>2 – Thời gian hết hạn</li>
+<li>3 – Click chọn vào duy nhất checkbox đầu tiên<ul>
+<li>Không chọn các role khác</li>
+</ul>
+</li>
+<li>Scroll chuột xuống dưới cùng và click vào “<strong>Generate token</strong>“</li>
+</ul>
+<p><img alt="" src="https://lh3.googleusercontent.com/q2FTsVjQYz9h7Wauo_I4t6-rZGPuTDTgbVgAXGNcYjOKL74c0FH-XbCX7Bt2vj2cu_BMMbaCcsU5AuRkLXx_7tZIEeizUFLJ6qu76hj-viK4JNWY2ZSSKFpIEAKfOjlUhSDM1R6V"></p>
+<ul>
+<li>Copy token được tạo ra (chuẩn bị cho step 02)</li>
+<li>Không chia sẻ access token ra ngoài – chỉ sử dụng private</li>
+</ul>
+<p><img alt="" src="https://lh5.googleusercontent.com/7ZiKp720WyO-x6nsc-JlPuCKvoAMOUF-r4qec9yyPIeqvFEJxltmverLD5oXrV87VDSap_p2cGSG8kL9MtcFOYXiTuw08o1vmDm_eDrIIWnhSQsrPhFFZ1mMzRpCowIZlA4L58QJ"></p>
+<ul>
+<li><strong>Step 02 – Add token vào Eclipse IDE</strong></li>
+<li>Mở Git Perspective trên Eclipse<ul>
+<li><em>Window &gt; Perspective &gt; Open Perspective &gt; Other</em></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="https://lh5.googleusercontent.com/pmDZL3VmBZMysYDpJla_S-9HpzJUj52WpslJ3qIadnCG6taGdYgvMqL6Q6mEKvPf0jTcUmgVHSOEECG_fSTIlGVm6tfdGmVv2v0Yfhaw4vAUdzDpmQ5po9WdGy54lG27KMSNVuE-"></p>
+<ul>
+<li>Chọn Git</li>
+</ul>
+<p><img alt="" src="https://lh4.googleusercontent.com/K9BvwvgdpXecBBRLmNDLRx3IgGSm7paaqVaJcbkA07sIKiDtB-rE6zVkMvHWt_pthw60rv05CkY_8YM01_EX47JhouplS2h826p94lMIGKWpXxiBvfuUiRkUiUe_skYpzeQJ8pvM"></p>
+<ul>
+<li>Change Config</li>
+<li>1 – Chọn repository bất kì (sẽ update luôn cho tất cả các repo khác)</li>
+<li>2 – Chọn “<strong>Remotes</strong>“</li>
+<li>3 – Click chuột phải vào “<strong>origin</strong>“</li>
+<li>4 – Chọn “<strong>Configure Push…</strong>“</li>
+</ul>
+<p><img alt="" src="https://lh6.googleusercontent.com/7AMiRSZAr2IxayBK_Ap-9HOOKejzboaM85FTshbg4zkSWt8goorw0wu5GsHUcheAZtkr2lob9Trn54eKK4FjF2vQ4VhkP_b5X3Xb76gNMo8dY1dABeE5tLD_8Vj3GJik0NADWHiP"></p>
+<ul>
+<li>Update access token vào thay field Password</li>
+<li>1 – Click “<strong>Change</strong>“</li>
+<li>2 – Dán Access token đã copy ở step 01 vào field Password và click “<strong>Finish</strong>“</li>
+</ul>
+<p><img alt="" src="https://lh6.googleusercontent.com/X0tCsNMrAlPcgETERj63zJHj7bPiqvQXyY_bHbiM5Vd3mBfSLzV1azpOsrZfiyH6OcPJRB5tnrqVEfiyXp46SwXloVfsvkODGd-ZNpnyTjgQ74I0uwjWn7QiE6Y9pLlViCusQrpo"></p>
+<ul>
+<li>Save lại</li>
+</ul>
+<p><img alt="" src="https://lh6.googleusercontent.com/czQWGOH-mwt69w2_y2I2SK673nZ624VMYIP-boGReFIWE10T8XOYswD7HolKp-xPmEjJuEb8gc965qcl2brBqfLWcIwghr-ZSe7kqosgbGYBYj1rYnp86bVNc66ric2xaZWwNJga"></p>
+<ul>
+<li><strong>Step 03 – Pull/ Push code lại</strong></li>
+<li>Quay trở lại Java Perspective</li>
+</ul>
+<p><img alt="" src="https://lh4.googleusercontent.com/02IHRPkP2DuCRNkcK3ay0evdA5uJiRblcvr4R2GouQMZ8hN2BHUtHh9vRPa096z3XEEX0uOJh6i7LlDfOAly2X7ciK3gJU92atdYbAJnqGQEbqy9co16N1ePWUA0NfEqD3wrsYSH"></p>
+<ul>
+<li>Pull/ Push code bình thường</li>
+</ul>
+<p><img alt="" src="https://lh3.googleusercontent.com/QZZ_pMx4y7ERAEMfSrbTbFdkwbxgRpst7SPJPg38QHMblt9te3YPmMC9ajsZyKxNOBSZlPbYyB-JqQDzikE59W93tZ0wPhILudVkKYGsYnG5_WIfFbvhxYtRL0l-VXdqJZuY7lCO"></p>
+<ul>
+<li><strong>Note – Trường hợp clone 1</strong> “<strong>repository mới</strong>“ <strong>về bằng Eclipse</strong></li>
+<li>Add SSH key vào github account<ul>
+<li>General &gt; Network Connections &gt; SSH2 &gt; Key Management &gt; Generate RSA Key</li>
+<li>Go to GitHub account &gt; Account settings &gt; SSH and GPG keys &gt; Add the public key</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="https://lh3.googleusercontent.com/i8d6lFBDLuxk7SlQYJaVRXLQsWHP0phtiXjl446HlE2EnY4qCljBrKHDTFdlMvfT3N-jyDIwRAZHwuU6vyMAyt9cVDgLheRPFD0NhihS2WlEYA-vdBnW0agUtMAT5viqP4-GzyGJ"></p>
+<ul>
+<li>Thay đổi giao thức clone qua SSH</li>
+</ul>
+<p><img alt="" src="https://lh3.googleusercontent.com/HGspn7NZAog55rEsmHVDcL_UPGCZQ86g_QoIkkw5GWYUbfJpBs8PVnDCfW-2fdf2oZaZnLqJrMViwvXOub60JZMuqi8h2du2YYrJXhUBavjilo1FcsjhY4SJfTlVLFl8ZK3k9IvM"></p>
+<ul>
+<li>Import trong Eclipse vs SSH</li>
+</ul>
+<p><img alt="" src="https://lh4.googleusercontent.com/rOEZ6sSrr3yTlg9HTTSyzi-V789TTOYyOvl3u0c_HE_LSwTPlFYMyPjXqBqDlyz5XctaE_JOHMU-UrjIvqKbqGo0i15tcfrAWrg5OaEoC9X3_ns5u3-NL7f_CPsm97mu-m2aTQqn"></p>
+<ul>
+<li>Nếu sử dụng Eclipse để import vẫn ko được thì sử dụng Git Bash clone về và import vào Eclipse sau</li>
+</ul>
+                <div class="clear"></div>
+
+                <div class="info">
+                    <a href="/push-code-tu-eclipse-len-github.html">posted at 21:54</a>
+                    &nbsp;&middot;
+                    &nbsp;<a href="/tag/github.html" class="tags">github</a>
+                    &nbsp;<a href="/tag/selenium.html" class="tags">selenium</a>
+                    &nbsp;<a href="/tag/eclipse.html" class="tags">eclipse</a>
+                </div>
+            </article>            <h4 class="date">Nov 20, 2015</h4>
 
             <article class="post">
                 <h2 class="title">
